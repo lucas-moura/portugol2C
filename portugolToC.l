@@ -1,6 +1,3 @@
-digits     [0-9]
-ltr        [a-zA-Z]
-alphanum   [a-zA-Z0-9]
 %%
 Se						 printf("if");
 se						 {return(IF);};
@@ -8,6 +5,11 @@ se						 {return(IF);};
 {ltr}(_|{alphanum})*     printf("found identifer: ’%s’\n", yytext);
 ’.’                      printf("found character: {%s}\n", yytext);
 .                        { /* absorb others */ }
+
+/** Valores */
+	numero		[0-9]
+	letra		[a-zA-Z]
+	alphanum   	[a-zA-Z0-9]
 
 /** Cabeçalhos */
 	// algoritmo, fimalgoritmo, var, inicio (fim do var)
