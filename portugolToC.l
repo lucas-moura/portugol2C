@@ -47,6 +47,11 @@ hInicio			inicio
 /* Declaração de variáveis */
 tipoVariavel	inteiro|real|logico|caractere|vetor
 
+/* Função e procedimento */
+/*funcao, fimfuncao, procedimento, fimprocedimento, retorne, var*/
+
+/** Cabeçalhos */
+/* algoritmo, fimalgoritmo, var, inicio (fim do var) */
 
 /********** FIM	Definições *********/
 %%
@@ -59,6 +64,25 @@ tipoVariavel	inteiro|real|logico|caractere|vetor
 {recebe}			{printf("recebe\n");}
 {tipoVariavel}		{printf("tipo de variavel");}
 {identificador}		{printf("identificador: %s\n", yytext);}
+
+/** Comandos de entrada */
+/* leia */
+
+/* Comandos de saída */
+/* escreva, escreval */
+
+/* Condições */
+// se, senao, fimse, entao
+
+/* Comando de seleção múltipla */
+/* escolha, caso, outrocaso, fimescolha /*
+
+/* Estruturas de repetição */
+/* para, faca, fimpara, enquanto, fimenquanto, repita, ate, interrompa, fimrepita */
+
+/* Outras funções */
+/* limpatela */
+
 %%
 int main(int argc, char **argv)
 {
