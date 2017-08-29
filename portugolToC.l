@@ -10,6 +10,10 @@ se						 {return(IF);};
 	numero		[0-9]
 	letra		[a-zA-Z]
 	alphanum   	[a-zA-Z0-9]
+	int 		(numero)+
+	real		(\numero+(\.\numero+))
+	string		("([^"])*")
+	logico		VERDADEIRO|FALSO
 
 /** Cabeçalhos */
 	// algoritmo, fimalgoritmo, var, inicio (fim do var)
@@ -53,7 +57,7 @@ se						 {return(IF);};
 	// para, faca, fimpara, enquanto, fimenquanto, repita, ate, interrompa, fimrepita
 
 /* Funções matemáticas */
-	
+
 
 /* Outras funções */
   // rand, limpatela...
