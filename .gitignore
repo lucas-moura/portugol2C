@@ -1,9 +1,9 @@
 # Created by https://www.gitignore.io/api/c
 
 ### C ###
-# Prerequisites
 *.d
-*.c
+*.c # Não detecta arquivos C
+*.o
 
 # Object files
 *.o
