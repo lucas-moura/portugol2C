@@ -48,6 +48,8 @@ hAlgoritmo		algoritmo
 hFimAlgoritmo	fimalgoritmo
 hVar			var
 hInicio			inicio
+fimBloco        (fimpara|fimfuncao|fimpara|fimprocedimento|fimalgoritmo|fimescolha)
+
 
 /* Declaração de variáveis */
 tipoVariavel	inteiro|real|logico|caractere
@@ -67,6 +69,7 @@ escreva{espacos}\({stringvar}|{identificador}\)        {printf("escreva\n");}
 escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
 
 {declaracaoVars}                                       {printf("Declarou variaveis");}
+{fimBloco}                                             {printf("Fim do bloco");}
 
 {int}				{printf("inteiro\n");}
 {real}				{printf("real\n");}
