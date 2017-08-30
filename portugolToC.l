@@ -2,12 +2,17 @@
 numero			[0-9]
 letra			[a-zA-Z]
 alphanum  		[a-zA-Z0-9_]
-int				{numero}+
+int				(-)?{numero}+
 real			({numero}+(\.{numero}+))
 string			(\"([^"])*\")
 logico			VERDADEIRO|FALSO
 tipo			{int}|{real}|{string}|{logico}
 identificador 	({letra}{alphanum}*)
+espacos         [ ]*
+intervalo       {numero}+\.\.{numero}+
+stringvar       ({espacos}{string}{espacos}[,]{espacos}{identificador})|({espacos}{identificador}{espacos}[,]{espacos}{string}{espacos})
+declaracaoVars  {espacos}({identificador})({espacos},{espacos}{identificador})*{espacos}:{espacos}({tipoVariavel}|(vetor{espacos}\[{intervalo}{espacos}\]{espacos}de{espacos}{tipoVariavel}))
+
 
 /* Operadores artiméticos */
 soma			(\+)
@@ -45,7 +50,7 @@ hVar			var
 hInicio			inicio
 
 /* Declaração de variáveis */
-tipoVariavel	inteiro|real|logico|caractere|vetor
+tipoVariavel	inteiro|real|logico|caractere
 
 /* Função e procedimento */
 /*funcao, fimfuncao, procedimento, fimprocedimento, retorne, var*/
@@ -55,6 +60,14 @@ tipoVariavel	inteiro|real|logico|caractere|vetor
 
 /********** FIM	Definições *********/
 %%
+
+leia{espacos}\({espacos}{identificador}{espacos}\)     {printf("leia var\n");}
+
+escreva{espacos}\({stringvar}|{identificador}\)        {printf("escreva\n");}
+escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
+
+{declaracaoVars}                                       {printf("Declarou variaveis");}
+
 {int}				{printf("inteiro\n");}
 {real}				{printf("real\n");}
 {string}			{printf("string\n");}
@@ -65,23 +78,7 @@ tipoVariavel	inteiro|real|logico|caractere|vetor
 {tipoVariavel}		{printf("tipo de variavel");}
 {identificador}		{printf("identificador: %s\n", yytext);}
 
-/** Comandos de entrada */
-/* leia */
 
-/* Comandos de saída */
-/* escreva, escreval */
-
-/* Condições */
-// se, senao, fimse, entao
-
-/* Comando de seleção múltipla */
-/* escolha, caso, outrocaso, fimescolha /*
-
-/* Estruturas de repetição */
-/* para, faca, fimpara, enquanto, fimenquanto, repita, ate, interrompa, fimrepita */
-
-/* Outras funções */
-/* limpatela */
 
 %%
 int main(int argc, char **argv)
