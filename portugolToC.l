@@ -32,6 +32,8 @@ menorIgual		<=
 maiorIgual		>=
 diferente		<>
 opRelacional	{igual}|{menor}|{maior}|{menorIgual}|{maiorIgual}|{diferente}
+condicao        ({identificador}{espacos}{opRelacional}{espacos}{tipo}|{identificador}{espacos}{opRelacional}{espacos}{identificador})
+
 
 /* Operadores lógicos */
 opNao			nao
@@ -39,6 +41,7 @@ opE				e
 opOu			ou
 opXou			xou
 opLogico		{opNao}|{opE}|{opOu}|{opXou}
+condicaoextendida ({condicao})({espacos}{opLogico}{espacos}{condicao})*
 
 /* Comando de atribuição */
 recebe			(<\-)
@@ -68,6 +71,9 @@ leia{espacos}\({espacos}{identificador}{espacos}\)     {printf("leia var\n");}
 escreva{espacos}\({stringvar}|{identificador}\)        {printf("escreva\n");}
 escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
 
+se{espacos}{condicaoextendida}{espacos}entao           {printf("se condicao entao\n");}
+se{espacos}\({espacos}{condicaoextendida}{espacos}\){espacos}entao  {printf("se condicao entao\n");}
+
 {declaracaoVars}                                       {printf("Declarou variaveis");}
 {fimBloco}                                             {printf("Fim do bloco");}
 
@@ -80,8 +86,7 @@ escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
 {recebe}			{printf("recebe\n");}
 {tipoVariavel}		{printf("tipo de variavel");}
 {identificador}		{printf("identificador: %s\n", yytext);}
-
-
+{condicaoextendida} {printf("condicao extendida %s\n",yytext);}
 
 %%
 int main(int argc, char **argv)
