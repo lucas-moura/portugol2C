@@ -740,6 +740,8 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "portugolToC.l"
+#line 2 "portugolToC.l"
+    #include "./libs/funcoes.h"
 /**********	Definições *********/
 /* Operadores artiméticos */
 /* Operadores de caracteres */
@@ -753,7 +755,7 @@ char *yytext;
 /** Cabeçalhos */
 /* algoritmo, fimalgoritmo, var, inicio (fim do var) */
 /********** FIM	Definições *********/
-#line 757 "lex.yy.c"
+#line 759 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -971,10 +973,10 @@ YY_DECL
 		}
 
 	{
-#line 64 "portugolToC.l"
+#line 68 "portugolToC.l"
 
 
-#line 978 "lex.yy.c"
+#line 980 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1033,83 +1035,83 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 66 "portugolToC.l"
+#line 70 "portugolToC.l"
 {printf("leia var\n");}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 68 "portugolToC.l"
+#line 72 "portugolToC.l"
 {printf("escreva\n");}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 69 "portugolToC.l"
+#line 73 "portugolToC.l"
 {printf("escreval\n");}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 71 "portugolToC.l"
+#line 75 "portugolToC.l"
 {printf("Declarou variaveis");}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 72 "portugolToC.l"
+#line 76 "portugolToC.l"
 {printf("Fim do bloco");}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 74 "portugolToC.l"
-{printf("inteiro\n");}
+#line 78 "portugolToC.l"
+{escreva(yytext);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 75 "portugolToC.l"
+#line 79 "portugolToC.l"
 {printf("real\n");}
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 76 "portugolToC.l"
+#line 80 "portugolToC.l"
 {printf("string\n");}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 77 "portugolToC.l"
+#line 81 "portugolToC.l"
 {printf("logico\n");}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 78 "portugolToC.l"
+#line 82 "portugolToC.l"
 {printf("operador logico\n");}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 79 "portugolToC.l"
+#line 83 "portugolToC.l"
 {printf("operador relacional\n");}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 80 "portugolToC.l"
+#line 84 "portugolToC.l"
 {printf("recebe\n");}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 81 "portugolToC.l"
+#line 85 "portugolToC.l"
 {printf("tipo de variavel");}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 82 "portugolToC.l"
+#line 86 "portugolToC.l"
 {printf("identificador: %s\n", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 86 "portugolToC.l"
+#line 90 "portugolToC.l"
 ECHO;
 	YY_BREAK
-#line 1113 "lex.yy.c"
+#line 1115 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2110,11 +2112,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 86 "portugolToC.l"
+#line 90 "portugolToC.l"
 
 
 int main(int argc, char **argv)
 {
-yylex();
+    yylex();
+
+
 }
 
