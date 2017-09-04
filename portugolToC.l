@@ -1,3 +1,7 @@
+%{
+    #include "./libs/funcoes.h"
+%}
+
 /**********	Definições *********/
 numero			[0-9]
 letra			[a-zA-Z]
@@ -82,7 +86,7 @@ outro\ {espacos}caso                                   {printf("outro caso\n");}
 {declaracaoVars}                                       {printf("Declarou variaveis");}
 {fimBloco}                                             {printf("Fim do bloco");}
 
-{int}				{printf("inteiro\n");}
+{int}				{escreva(yytext);}
 {real}				{printf("real\n");}
 {string}			{printf("string\n");}
 {logico}			{printf("logico\n");}
@@ -96,5 +100,7 @@ outro\ {espacos}caso                                   {printf("outro caso\n");}
 %%
 int main(int argc, char **argv)
 {
-yylex();
+    yylex();
+
+
 }

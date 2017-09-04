@@ -2516,6 +2516,8 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "portugolToC.l"
+#line 2 "portugolToC.l"
+    #include "./libs/funcoes.h"
 /**********	Definições *********/
 /* Operadores artiméticos */
 /* Operadores de caracteres */
@@ -2530,10 +2532,14 @@ char *yytext;
 /* algoritmo, fimalgoritmo, var, inicio (fim do var) */
 /********** FIM	Definições *********/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 2175 "lex.yy.c"
 =======
 #line 810 "lex.yy.c"
 >>>>>>> Erick
+=======
+#line 759 "lex.yy.c"
+>>>>>>> moura
 
 #define INITIAL 0
 
@@ -2751,6 +2757,7 @@ YY_DECL
 		}
 
 	{
+<<<<<<< HEAD
 #line 67 "portugolToC.l"
 
 
@@ -2759,6 +2766,12 @@ YY_DECL
 =======
 #line 1031 "lex.yy.c"
 >>>>>>> Erick
+=======
+#line 68 "portugolToC.l"
+
+
+#line 980 "lex.yy.c"
+>>>>>>> moura
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2825,24 +2838,37 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 69 "portugolToC.l"
+=======
+#line 70 "portugolToC.l"
+>>>>>>> moura
 {printf("leia var\n");}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 71 "portugolToC.l"
+=======
+#line 72 "portugolToC.l"
+>>>>>>> moura
 {printf("escreva\n");}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 72 "portugolToC.l"
+=======
+#line 73 "portugolToC.l"
+>>>>>>> moura
 {printf("escreval\n");}
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 74 "portugolToC.l"
 {printf("se condicao entao\n");}
@@ -2850,10 +2876,15 @@ YY_RULE_SETUP
 #line 71 "portugolToC.l"
 {printf("escolha\n");}
 >>>>>>> Erick
+=======
+#line 75 "portugolToC.l"
+{printf("Declarou variaveis");}
+>>>>>>> moura
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 75 "portugolToC.l"
 {printf("se condicao entao\n");}
@@ -2872,6 +2903,15 @@ case 8:
 YY_RULE_SETUP
 #line 80 "portugolToC.l"
 {printf("inteiro\n");}
+=======
+#line 76 "portugolToC.l"
+{printf("Fim do bloco");}
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 78 "portugolToC.l"
+{escreva(yytext);}
+>>>>>>> moura
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
@@ -2888,11 +2928,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 75 "portugolToC.l"
 {printf("Declarou variaveis");}
+=======
+#line 79 "portugolToC.l"
+{printf("real\n");}
+>>>>>>> moura
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 76 "portugolToC.l"
 {printf("Fim do bloco");}
 	YY_BREAK
@@ -2901,10 +2947,20 @@ YY_RULE_SETUP
 #line 78 "portugolToC.l"
 {printf("inteiro\n");}
 >>>>>>> Erick
+=======
+#line 80 "portugolToC.l"
+{printf("string\n");}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 81 "portugolToC.l"
+{printf("logico\n");}
+>>>>>>> moura
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
+<<<<<<< HEAD
 <<<<<<< HEAD
 #line 82 "portugolToC.l"
 {printf("string\n");}
@@ -2912,27 +2968,45 @@ YY_RULE_SETUP
 #line 79 "portugolToC.l"
 {printf("real\n");}
 >>>>>>> Erick
+=======
+#line 82 "portugolToC.l"
+{printf("operador logico\n");}
+>>>>>>> moura
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 83 "portugolToC.l"
 {printf("logico\n");}
+=======
+#line 83 "portugolToC.l"
+{printf("operador relacional\n");}
+>>>>>>> moura
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 84 "portugolToC.l"
+<<<<<<< HEAD
 {printf("operador logico\n");}
+=======
+{printf("recebe\n");}
+>>>>>>> moura
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 85 "portugolToC.l"
+<<<<<<< HEAD
 {printf("operador relacional\n");}
+=======
+{printf("tipo de variavel");}
+>>>>>>> moura
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 86 "portugolToC.l"
+<<<<<<< HEAD
 {printf("recebe\n");}
 	YY_BREAK
 case 15:
@@ -2943,6 +3017,8 @@ YY_RULE_SETUP
 case 16:
 YY_RULE_SETUP
 #line 88 "portugolToC.l"
+=======
+>>>>>>> moura
 {printf("identificador: %s\n", yytext);}
 	YY_BREAK
 case 17:
@@ -2978,6 +3054,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
+<<<<<<< HEAD
 #line 84 "portugolToC.l"
 {printf("recebe\n");}
 	YY_BREAK
@@ -2998,6 +3075,12 @@ ECHO;
 	YY_BREAK
 #line 1182 "lex.yy.c"
 >>>>>>> Erick
+=======
+#line 90 "portugolToC.l"
+ECHO;
+	YY_BREAK
+#line 1115 "lex.yy.c"
+>>>>>>> moura
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -4011,14 +4094,20 @@ void yyfree (void * ptr )
 #define YYTABLES_NAME "yytables"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 91 "portugolToC.l"
 =======
 #line 90 "portugolToC.l"
 >>>>>>> Erick
+=======
+#line 90 "portugolToC.l"
+>>>>>>> moura
 
 
 int main(int argc, char **argv)
 {
-yylex();
+    yylex();
+
+
 }
 
