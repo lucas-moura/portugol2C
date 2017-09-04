@@ -14,6 +14,8 @@ int getFirstIndexChar(char letra, char *texto)
     return -1;
 }
 
+
+
 // Ignora se estiver dentro da string
 char* getConteudoEntreParenteses(char *texto)
 {
@@ -59,13 +61,16 @@ void escreva(char *texto)
     int indiceFinal = -1;
     printf("%d", i);
     int estaEntreAspas = -1; // não está entre aspas
-    char *teste = getConteudoEntreParenteses(texto);
+
+    char *textoDentro = getConteudoEntreParenteses(texto);
+    char conteudo[700];
+    int cont = 0;
     printf("Final: %s\n", teste);
-    //printf("%s\n", getConteudoEntreParenteses(texto));
-    /*for(i=0; i < strlen(texto); i++)
+
+    for(i=0; i < strlen(textoDentro); i++)
     {
-        printf("caracter: %c\n", texto[i]);
-        if(texto[i] == '"')
+        printf("caracter: %c\n", textoDentro[i]);
+        if(textoDentro[i] == '"')
         {
             estaEntreAspas *= -1;
         }
@@ -74,13 +79,15 @@ void escreva(char *texto)
         if(estaEntreAspas == 1)
         {
 
+            conteudo[cont++] = textoDentro[i];
+
         }
         else // Não Está entre aspas
         {
-            if(texto[i] == ')')
-                indiceFinal = i;
+            conteudo[cont++] = '%';
+            conteudo[cont++] = 's';
         }
 
         printf("%d\n", estaEntreAspas);
-    }*/
+    }
 }
