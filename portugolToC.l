@@ -71,8 +71,13 @@ leia{espacos}\({espacos}{identificador}{espacos}\)     {printf("leia var\n");}
 escreva{espacos}\({stringvar}|{identificador}\)        {printf("escreva\n");}
 escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
 
+
 se{espacos}{condicaoextendida}{espacos}entao           {printf("se condicao entao\n");}
 se{espacos}\({espacos}{condicaoextendida}{espacos}\){espacos}entao  {printf("se condicao entao\n");}
+
+escolha{espacos}\({espacos}{identificador}{espacos}\)  {printf("escolha\n");}
+caso\ {espacos}({tipo}|{identificador})                {printf("caso\n");}
+outro\ {espacos}caso                                   {printf("outro caso\n");}
 
 {declaracaoVars}                                       {printf("Declarou variaveis");}
 {fimBloco}                                             {printf("Fim do bloco");}
