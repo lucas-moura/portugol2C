@@ -1,2 +1,45 @@
-int getFirstIndexChar(char letra, char *texto);
+#define ASPAS_DUPLAS '\"'
+#define ASPAS_SIMPLES '\''
+#define ESPACO ' '
+#define VIRGULA ','
+#define DOIS_PONTOS ':'
+#define ABRE_PARENTESES '('
+#define FECHA_PARENTESES ')'
+#define FIM_STRING '\0'
+
+struct variavel{
+    char nome[60];
+    char operador; // d, f, c
+    char tipo[10]; // int, float, char
+};
+
+// Aloca um espaço na memória com o tamanho e retorna a string
+char* declararString(int tamanho);
+
+// Retorna o índice da primeira ocorrência do caracter informado
+int getPrimeiroIndiceChar(char letra, char *texto);
+
+//
+char* getStringAteCharLimitador(char *original, char charLimitador, int *indice);
+
+// Retorna o conteúdo que está entre os parênteses
+char* getConteudoEntreParenteses(char *texto);
+
+// Partindo de um índice informado, retorna o nome da primeira variável encontrada
+char* getNomeVariavel(char *texto, int indiceInicial);
+
+// Remove os espaços em branco que estão fora das aspas duplas
+char* removerEspacosForaDaString(char *conteudo);
+
+// Retorna a letra correspondente ao tipo da variável. Ex: 'c', 'd', 's'...
+char getOperadorVariavel(char *nomeVariavel);
+
+// Identifica a variável encontrada e o seu respectivo operador na string do printf. Não adiciona o nome
+// da variável na string
+void concatVariavelEncontrada(char *textoDentro, char *conteudo, char *nomesVariaveis, int indiceTxtDentro, int *cont);
+
+// Função responsável por converter a função 'escreva' do portugol
 void escreva(char *texto);
+
+// Retorna o conteúdo que está entre os parênteses
+char* getConteudoEntreParenteses(char *texto);
