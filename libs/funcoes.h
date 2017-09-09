@@ -2,6 +2,7 @@
 #define ASPAS_SIMPLES '\''
 #define ESPACO ' '
 #define VIRGULA ','
+#define ESTRELA '*'
 #define DOIS_PONTOS ':'
 #define ABRE_PARENTESES '('
 #define FECHA_PARENTESES ')'
@@ -18,9 +19,6 @@ char* declararString(int tamanho);
 
 // Retorna o índice da primeira ocorrência do caracter informado
 int getPrimeiroIndiceChar(char letra, char *texto);
-
-//
-char* getStringAteCharLimitador(char *original, char charLimitador, int *indice);
 
 // Retorna o conteúdo que está entre os parênteses
 char* getConteudoEntreParenteses(char *texto);
@@ -41,5 +39,17 @@ void concatVariavelEncontrada(char *textoDentro, char *conteudo, char *nomesVari
 // Função responsável por converter a função 'escreva' do portugol
 void escreva(char *texto);
 
+//
+char* getStringAteCharLimitador(char *original, char charLimitador, int *indice);
+
 // Retorna o conteúdo que está entre os parênteses
 char* getConteudoEntreParenteses(char *texto);
+
+//
+void addVariavel(int indiceVarInicial, char tipoVar);
+
+//
+void declararVariavel(char *linha);
+
+//
+void imprimirVariaveis();

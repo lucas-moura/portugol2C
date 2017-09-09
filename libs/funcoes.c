@@ -83,6 +83,14 @@ char* removerEspacosForaDaString(char *conteudo)
 
 char getOperadorVariavel(char *nomeVariavel)
 {
+    int i = 0;
+    for(i=0; i < qtdVariaveis; i++)
+    {
+        if(strcmp(variaveis[i].nome, nomeVariavel) == 0)
+        {
+            return variaveis[i].operador;
+        }
+    }
     return 's';
 }
 
@@ -101,10 +109,11 @@ void escreva(char *texto)
     int i = 0, indiceFinal = -1, cont = 0, estaEntreAspas = -1; // não está entre aspas
     char *textoDentro = getConteudoEntreParenteses(texto);
     textoDentro = removerEspacosForaDaString(textoDentro);
-    char conteudo[700];
+    char conteudo[200];
     char nomesVariaveis[700];
+    nomesVariaveis[0] = FIM_STRING;
     conteudo[cont++] = ASPAS_DUPLAS;
-    printf("Texto dentro[%d]: %s\n", strlen(textoDentro), textoDentro);
+    //printf("Texto dentro[%d]: %s\n", strlen(textoDentro), textoDentro);
     for(i=0; i < strlen(textoDentro); i++)
     {
         if(textoDentro[i] == ASPAS_DUPLAS)
@@ -125,7 +134,7 @@ void escreva(char *texto)
     conteudo[cont++] = ASPAS_DUPLAS;
     conteudo[cont] = FIM_STRING;
     strcat(conteudo, nomesVariaveis);
-    printf("Conteudo:\n %s\n", conteudo);
+    printf("printf(%s);\n", conteudo);
 }
 
 char* getStringAteCharLimitador(char *original, char charLimitador, int *indice)
@@ -136,37 +145,73 @@ char* getStringAteCharLimitador(char *original, char charLimitador, int *indice)
     for(*indice=*indice; *indice < strlen(original) && original[*(indice)] != charLimitador; (*indice)++)
         stringRetorno[cont++] = original[*indice];
     stringRetorno[cont] = FIM_STRING;
-    printf("oi");
     //printf("%s", stringRetorno);
     return stringRetorno;
+}
+
+void addVariavel(int indiceVarInicial, char tipoVar)
+{
+    int i = 0;
+    for(i=indiceVarInicial; i < qtdVariaveis; i++)
+    {
+        if(tipoVar == 'i')
+        {
+            variaveis[i].operador = 'd';
+            strcpy(variaveis[i].tipo, "int");
+        }
+        else if(tipoVar == 'r')
+        {
+            variaveis[i].operador = 'f';
+            strcpy(variaveis[i].tipo, "float");
+        }
+        else if(tipoVar == 'c')
+        {
+            variaveis[i].operador = 'c';
+            strcpy(variaveis[i].tipo, "char");
+        }
+        //printf("[%d] addVariavel %s -> %c\n", i, variaveis[i].nome, tipoVar);
+    }
 }
 
 void declararVariavel(char *linha)
 {
     int i = 0, somenteNomesVars = 1;
     linha = removerEspacosForaDaString(linha);
+    int indiceNomeVar = 0;
+    char tipoVar = ESTRELA; // Caracter que representa o estado inicial
+    int indiceVarInicial = qtdVariaveis;
+    //qtdVariaveis++;
+
     for(i=0; i < strlen(linha); i++)
     {
         if(linha[i] == VIRGULA)
         {
-            qtdVariaveis++;
+            variaveis[qtdVariaveis++].nome[indiceNomeVar] = FIM_STRING;
+            indiceNomeVar = 0;
         }
         else if(linha[i] == DOIS_PONTOS)
         {
             somenteNomesVars = 0;
+            qtdVariaveis++;
         }
         else
         {
-            if(somenteNomesVars == 1)
-            {
-                // nomes das variáveis
-
-            }
-            else
-            {
-                // tipo da variável
-            }
+            if(somenteNomesVars == 1) // Nomes das variáveis
+                variaveis[qtdVariaveis].nome[indiceNomeVar++] = linha[i];
+            else // Tipo da variável
+                if(tipoVar == ESTRELA)
+                    tipoVar = linha[i]; // só pegao primeiro char do tipo
         }
     }
-    //adicionarVariavel(textoDentro);
+    addVariavel(indiceVarInicial, tipoVar);
+
+}
+
+void imprimirVariaveis()
+{
+    int i = 0;
+    for(i=0; i < qtdVariaveis; i++)
+    {
+        printf("%s %s;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
+    }
 }
