@@ -45,17 +45,17 @@ void escreva(char *texto);
 // Função do escreva com quebra de linha no final
 void escreval(char *texto);
 
-//
+// Função do escreva com quebra de linha no final
 char* getStringAteCharLimitador(char *original, char charLimitador, int *indice);
 
 // Retorna o conteúdo que está entre os parênteses
 char* getConteudoEntreParenteses(char *texto);
 
-//
+// Adiciona uma variável na minha lista de variáveis
 void addVariavel(int indiceVarInicial, char tipoVar);
 
-//
+// Interpreta a linah de variáveis e adiciona na lista
 void declararVariavel(char *linha);
 
-//
+// Imprime todas as variáveis já declaradas
 void imprimirVariaveis();
