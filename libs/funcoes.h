@@ -36,8 +36,14 @@ char getOperadorVariavel(char *nomeVariavel);
 // da variável na string
 void concatVariavelEncontrada(char *textoDentro, char *conteudo, char *nomesVariaveis, int indiceTxtDentro, int *cont);
 
-// Função responsável por converter a função 'escreva' do portugol
+// Função responsável por converter as funções 'escreva' ou 'escreval' do portugol
+void escrevaFunc(char *texto, int temNovalinha);
+
+// Função do escreva sem quebra de linha no final
 void escreva(char *texto);
+
+// Função do escreva com quebra de linha no final
+void escreval(char *texto);
 
 //
 char* getStringAteCharLimitador(char *original, char charLimitador, int *indice);

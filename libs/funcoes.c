@@ -104,7 +104,7 @@ void concatVariavelEncontrada(char *textoDentro, char *conteudo, char *nomesVari
 }
 
 
-void escreva(char *texto)
+void escrevaFunc(char *texto, int temNovalinha)
 {
     int i = 0, indiceFinal = -1, cont = 0, estaEntreAspas = -1; // não está entre aspas
     char *textoDentro = getConteudoEntreParenteses(texto);
@@ -131,10 +131,25 @@ void escreva(char *texto)
         }
 
     }
+    if(temNovalinha == 1)
+    {
+        conteudo[cont++] = '\\';
+        conteudo[cont++] = 'n';
+    }
     conteudo[cont++] = ASPAS_DUPLAS;
     conteudo[cont] = FIM_STRING;
     strcat(conteudo, nomesVariaveis);
     printf("printf(%s);\n", conteudo);
+}
+
+void escreva(char *texto)
+{
+    escrevaFunc(texto, 0);
+}
+
+void escreval(char *texto)
+{
+    escrevaFunc(texto, 1);
 }
 
 char* getStringAteCharLimitador(char *original, char charLimitador, int *indice)

@@ -10,7 +10,10 @@ int main()
     declararVariavel(texto2);
     char *texto3 = "textao, msg, saida: caractere";
     declararVariavel(texto3);
-    escreva("escreva(\"       Resultado da operacao: \", textao)");
+
     imprimirVariaveis();
+    escreva("escreva(\"       Resultado da operacao: \", textao)");
+    escreval("escreval(\"Teste : \", n1)");
+
     return 0;
 }
