@@ -94,6 +94,33 @@ char getOperadorVariavel(char *nomeVariavel)
     return 's';
 }
 
+void leia(char *texto){
+    char *nomeVariavel = getConteudoEntreParenteses(texto);
+    nomeVariavel = removerEspacosForaDaString(nomeVariavel);
+    char o = getOperadorVariavel(nomeVariavel);
+    printf("scanf(\"%%%c\",&%s);\n",o,nomeVariavel);
+}
+
+void escolha(char *texto){
+    char *nomeVariavel = getConteudoEntreParenteses(texto);
+    printf("switch (%s){\n",nomeVariavel);
+}
+
+void caso(char *texto){
+    char *retorno = declararString(strlen(texto));
+    int i, cont=0, e = 0;
+    for(i=0;i<strlen(texto);i++){
+        if(e == 1 && texto[i] == '"'){
+            printf("case \"%s\":\n",retorno);
+        }        
+        if(e == 1){
+            retorno[cont++]=texto[i];
+        }
+        if(e == 0 && texto[i]=='"'){
+            e = 1;
+        }
+    }
+}
 void concatVariavelEncontrada(char *textoDentro, char *conteudo, char *nomesVariaveis, int indiceTxtDentro, int *cont)
 {
     char *nomeVar = getNomeVariavel(textoDentro, indiceTxtDentro+1);
@@ -227,6 +254,6 @@ void imprimirVariaveis()
     int i = 0;
     for(i=0; i < qtdVariaveis; i++)
     {
-        printf("%s %s;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
+        printf("%s %s %c;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
     }
 }

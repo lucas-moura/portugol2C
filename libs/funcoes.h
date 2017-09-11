@@ -42,6 +42,9 @@ void escrevaFunc(char *texto, int temNovalinha);
 // Função do escreva sem quebra de linha no final
 void escreva(char *texto);
 
+void leia(char *texto);
+void caso(char *texto);
+void escolha(char *escolha);
 // Função do escreva com quebra de linha no final
 void escreval(char *texto);
 
