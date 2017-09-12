@@ -39,9 +39,11 @@ char* getConteudoEntreParenteses(char *texto)
         }
         else //  Não está entre aspas
         {
-            if(texto[i] == FECHA_PARENTESES)
-                indiceFinal = i;
-            else
+          if(texto[i] == FECHA_PARENTESES)
+           {
+               indiceFinal = i;
+               break;
+           }else
                 stringRetorno[cont++] = texto[i];
         }
     }
@@ -112,7 +114,7 @@ void caso(char *texto){
     for(i=0;i<strlen(texto);i++){
         if(e == 1 && texto[i] == '"'){
             printf("case \"%s\":\n",retorno);
-        }        
+        }
         if(e == 1){
             retorno[cont++]=texto[i];
         }
@@ -255,5 +257,26 @@ void imprimirVariaveis()
     for(i=0; i < qtdVariaveis; i++)
     {
         printf("%s %s %c;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
+    }
+}
+
+void se(char *texto, int temParenteses)
+{
+    if(temParenteses == 0)
+    {
+        char *textoDentro = getConteudoEntreParenteses(texto);
+        textoDentro = removerEspacosForaDaString(textoDentro);
+        printf("if(%s){\n", textoDentro);
+    }
+
+}
+
+void enquanto(char *texto, int temParenteses)
+{
+    if(temParenteses == 0)
+    {
+        char *textoDentro = getConteudoEntreParenteses(texto);
+        textoDentro = removerEspacosForaDaString(textoDentro);
+        printf("while(%s){\n", textoDentro);
     }
 }

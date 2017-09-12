@@ -62,3 +62,9 @@ void declararVariavel(char *linha);
 
 // Imprime todas as variáveis já declaradas
 void imprimirVariaveis();
+
+//Função do condicional se
+void se(char *texto, int temParenteses);
+
+//Função do laço enquanto
+void enquanto(char *texto, int temParenteses);

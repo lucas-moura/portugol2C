@@ -16,5 +16,7 @@ int main()
     leia("leia(n1)");
     escolha("escolha (a)");
     caso("caso \"bb\"");
+    se("se ( v1 > v2 e v2 > v3 ) entao", 0);
+    enquanto("enquanto(a < b)faca");
     return 0;
 }
