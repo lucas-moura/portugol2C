@@ -214,6 +214,7 @@ void addVariavel(int indiceVarInicial, char tipoVar)
             strcpy(variaveis[i].tipo, "char");
         }
         //printf("[%d] addVariavel %s -> %c\n", i, variaveis[i].nome, tipoVar);
+        printf("%s %s;\n", variaveis[i].tipo, variaveis[i].nome);
     }
 }
 
@@ -248,7 +249,6 @@ void declararVariavel(char *linha)
         }
     }
     addVariavel(indiceVarInicial, tipoVar);
-
 }
 
 void imprimirVariaveis()
@@ -256,7 +256,8 @@ void imprimirVariaveis()
     int i = 0;
     for(i=0; i < qtdVariaveis; i++)
     {
-        printf("%s %s %c;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
+        printf("%s %s;\n", variaveis[i].tipo, variaveis[i].nome);
+        //printf("%s %s %c;\n", variaveis[i].tipo, variaveis[i].nome, variaveis[i].operador);
     }
 }
 

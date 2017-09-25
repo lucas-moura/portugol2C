@@ -5,7 +5,7 @@
 /**********	Definições *********/
 numero			[0-9]
 letra			[a-zA-Z]
-alphanum  		[a-zA-Z0-9_]
+alphanum  		[a-zA-Z0-9_ãç]
 int				(-)?{numero}+
 real			({numero}+(\.{numero}+))
 string			(\"([^"])*\")
@@ -14,9 +14,10 @@ tipo			{int}|{real}|{string}|{logico}
 identificador 	({letra}{alphanum}*)
 espacos         [ ]*
 intervalo       {numero}+\.\.{numero}+
-stringvar       ({espacos}{string}{espacos}[,]{espacos}{identificador})|({espacos}{identificador}{espacos}[,]{espacos}{string}{espacos})
+/*stringvar       ({espacos}{string}{espacos}[,]{espacos}{identificador})|({espacos}{identificador}{espacos}[,]{espacos}{string}{espacos})*/
+stringvar       ({espacos}{string}{espacos}[,]{espacos}{identificador})|({espacos}{identificador}{espacos}[,]{espacos}{string}{espacos}|{espacos}{string}{espacos})
 declaracaoVars  {espacos}({identificador})({espacos},{espacos}{identificador})*{espacos}:{espacos}({tipoVariavel}|(vetor{espacos}\[{intervalo}{espacos}\]{espacos}de{espacos}{tipoVariavel}))
-
+comentario      {espacos}(\/\/({alphanum}|[ ])*)
 
 /* Operadores artiméticos */
 soma			(\+)
@@ -55,7 +56,7 @@ hAlgoritmo		algoritmo
 hFimAlgoritmo	fimalgoritmo
 hVar			var
 hInicio			inicio
-fimBloco        (fimpara|fimfuncao|fimpara|fimprocedimento|fimalgoritmo|fimescolha)
+fimBloco        (fimpara|fimfuncao|fimpara|fimprocedimento|fimalgoritmo|fimescolha|fimse|fimenquanto)
 
 
 /* Declaração de variáveis */
@@ -69,38 +70,38 @@ tipoVariavel	inteiro|real|logico|caractere
 
 /********** FIM	Definições *********/
 %%
-
-leia{espacos}\({espacos}{identificador}{espacos}\)     {printf("leia var\n");}
-
-escreva{espacos}\({stringvar}|{identificador}\)        {printf("escreva\n");}
-escreval{espacos}\({stringvar}|{identificador}\)       {printf("escreval\n");}
+leia{espacos}\({espacos}{identificador}{espacos}\)     {leia(yytext);}
+escreva{espacos}\(({stringvar}|{identificador})\){comentario}*        {escreva(yytext);}
+escreval\(({stringvar}|{identificador})\){comentario}*        {escreval(yytext);}
 
 
-se{espacos}{condicaoextendida}{espacos}entao           {printf("se condicao entao\n");}
+se{espacos}{condicaoextendida}{espacos}entao{espacos}{comentario}*           {se(yytext, 0);}
 se{espacos}\({espacos}{condicaoextendida}{espacos}\){espacos}entao  {printf("se condicao entao\n");}
 
-escolha{espacos}\({espacos}{identificador}{espacos}\)  {printf("escolha\n");}
-caso\ {espacos}({tipo}|{identificador})                {printf("caso\n");}
+escolha{espacos}\({espacos}{identificador}{espacos}\)  {escolha(yytext);}
+caso\ {espacos}({tipo}|{identificador})                {caso(yytext);}
 outro\ {espacos}caso                                   {printf("outro caso\n");}
+{comentario}                                           {printf("%s", yytext);}
 
-{declaracaoVars}                                       {printf("Declarou variaveis");}
-{fimBloco}                                             {printf("Fim do bloco");}
+{declaracaoVars}                                       {declararVariavel(yytext);}
+{fimBloco}                                             {printf("}");}
 
+({hVar}|{hInicio})    {}
 {int}				{escreva(yytext);}
 {real}				{printf("real\n");}
 {string}			{printf("string\n");}
 {logico}			{printf("logico\n");}
 {opLogico}			{printf("operador logico\n");}
 {opRelacional}		{printf("operador relacional\n");}
-{recebe}			{printf("recebe\n");}
+{recebe}			{printf("=");}
 {tipoVariavel}		{printf("tipo de variavel");}
-{identificador}		{printf("identificador: %s\n", yytext);}
+{identificador}		{printf("%s", yytext);}
 {condicaoextendida} {printf("condicao extendida %s\n",yytext);}
-
 %%
 int main(int argc, char **argv)
 {
     yylex();
 
-
 }
+
+int yywrap() {return 0; }
