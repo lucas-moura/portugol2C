@@ -83,6 +83,8 @@ caso\ {espacos}({tipo}|{identificador})                {caso(yytext);}
 outro\ {espacos}caso                                   {printf("outro caso\n");}
 {comentario}                                           {printf("%s", yytext);}
 
+enquanto{espacos}\({espacos}{condicaoextendida}{espacos}\){espacos}faca      {enquanto(yytext, 0);}
+
 {declaracaoVars}                                       {declararVariavel(yytext);}
 {fimBloco}                                             {printf("}");}
 
